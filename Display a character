@@ -1,0 +1,3 @@
+MOV AH,02H ;select dos function 02h to display a character
+MOV DL,'A' 
+INT 21H ;call interrupt 21h to display the character 
