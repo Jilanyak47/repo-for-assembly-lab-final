@@ -1,0 +1,15 @@
+;floor area=20*20=400
+;tiles area=2*2=4
+;number of tiles=400/4=100 
+.DATA 
+FLOOR DW 400
+TILE DW 4 
+RESULT Dw? 
+.CODE 
+MAIN PROC 
+MOV AX,@DATA
+MOV DS,AX
+MOV AX,FLOOR 
+MOV BX,TILE 
+DIV BX 
+MOV RESULT ,AX
