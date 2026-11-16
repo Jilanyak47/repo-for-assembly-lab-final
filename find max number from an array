@@ -1,0 +1,36 @@
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+ARR DB 10, 25, 15, 40, 30
+MAX DB ?
+
+.CODE
+MAIN PROC
+
+    MOV AX, @DATA
+    MOV DS, AX
+
+    LEA SI, ARR
+    MOV CL, 5
+    MOV AL, [SI]
+
+AGAIN:
+    INC SI
+    DEC CL
+    JZ RESULT
+
+    CMP AL, [SI]
+    JAE AGAIN
+
+    MOV AL, [SI]
+    JMP AGAIN
+
+RESULT:
+    MOV MAX, AL
+
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN
