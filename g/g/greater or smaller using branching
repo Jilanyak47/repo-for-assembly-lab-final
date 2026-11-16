@@ -1,0 +1,40 @@
+.MODEL SMALL
+.STACK 100H
+
+.CODE
+MAIN PROC
+
+    MOV AH, 01H
+    INT 21H
+    MOV BL, AL
+
+    MOV AH, 01H
+    INT 21H
+    MOV BH, AL
+
+    CMP BL, BH
+    JA GREATER
+    JB SMALLER
+
+    MOV DL, 'E'
+    MOV AH, 02H
+    INT 21H
+    JMP EXIT
+
+GREATER:
+    MOV DL, 'G'
+    MOV AH, 02H
+    INT 21H
+    JMP EXIT
+
+SMALLER:
+    MOV DL, 'S'
+    MOV AH, 02H
+    INT 21H
+
+EXIT:
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN
