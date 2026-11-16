@@ -1,0 +1,10 @@
+.DATA 
+MESSAGE DB'HELLO WORLD$'
+.CODE 
+MAIN PROC 
+MOV AX,@DATA 
+MOV DS,AX 
+MOV AH,09H ;Select dos string to display function 
+LEA MX,MSG ;load the address of message into dx 
+INT 21H 
+
